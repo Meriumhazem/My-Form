@@ -208,7 +208,7 @@ mysqli_close($conn);
         Institute:<input type="text" name="myinstitute"/>
         <span class="error"><?php echo $institute_Err; ?></span>
         <br><br>
-        PhoneNumber:<input type="number" name="mynumber"/>
+        PhoneNumber:<input type="text" name="mynumber"/>
         <span class="error"><?php echo $phone_Err; ?></span>
         <br><br>
        </div>
