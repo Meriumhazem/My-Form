@@ -179,7 +179,7 @@ if (!empty($_POST["myname"]) && !empty($_POST["mysurname"]) && !empty($_POST["my
     VALUES ('$name' , '$surname' , '$email' , '$institute' , '$phonenumber')";
 
     if (mysqli_query($conn, $sql)) {
-        $new_record = "*New record created successfully*";
+        $new_record = "*New record created successfully!*";
     }
     else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
