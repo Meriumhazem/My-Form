@@ -170,8 +170,8 @@ if (!$conn) {
 }
 
 
-if (!empty($_POST["myname"]) && !empty($_POST["mysurname"]) && !empty($_POST["myemail"]) && !empty($_POST["myinstitute"])
-    && !empty($_POST["mynumber"]) && preg_match("/^[a-zA-Z ]*$/", $name) && preg_match("/^[a-zA-Z ]*$/", $surname)
+if (!empty($name) && !empty($surname) && !empty($email) && !empty($institute) && !empty($phonenumber)
+    && preg_match("/^[a-zA-Z ]*$/", $name) && preg_match("/^[a-zA-Z ]*$/", $surname)
     && filter_var($email, FILTER_VALIDATE_EMAIL) && preg_match("/^[a-zA-Z ]*$/", $institute) &&
     preg_match("/^[1-9][0-9]{0,8}$/", $phonenumber)){
 
