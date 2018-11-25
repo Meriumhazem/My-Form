@@ -9,10 +9,8 @@
             width: 550px;
             height: 370px;
             /*background-color: yellow;*/
-            border-style: solid;
-            border-width: 2px;
+            border: solid 2px yellow;
             border-radius: 5px;
-            border-color: yellow;
         }
         .titles{
             margin-left: 5px;
@@ -25,6 +23,12 @@
             text-align: center;
             color: red;
         }
+        .border{
+            border: solid 1px black;
+            border-radius: 4px;
+            caret-color: grey;
+            outline: none;
+        }
         .error{
             color: orange;
         }
@@ -34,25 +38,15 @@
             height: 50px;
             margin:auto;
         }
-        .record{
-            width: 230px;
-            height: 20px;
-            margin: 15px auto;
-            /*background-color: gray;*/
-        }
-        .record .new{
-            color: red;
-        }
         .button{
+            color: white;
             margin-top: 10px;
             margin-left: 50px;
             width: 100px;
             height: 40px;
-            border-style: solid;
-            border-width: thin;
-            border-color: black;
-            border-radius: 5px;
+            border: solid thin red;
             background-color: red;
+            border-radius: 5px;
             cursor: pointer;
             box-shadow: 4px 4px 5px #888888;
             outline: none;
@@ -60,16 +54,31 @@
         .button:active{
             box-shadow: none;
         }
+        .record_add{
+            width: 230px;
+            height: 20px;
+            margin: 15px auto;
+            /*background-color: gray;*/
+        }
+        .record_add .new{
+            color: green;
+        }
+        .record_error{
+            width: 500px;
+            margin: 15px auto;
+            /*background-color: blue;*/
+        }
+        .record_error .fail{
+            color: red;
+        }
         @media only screen and (max-width: 1000px) {
             .form{
                 margin: auto;
                 width: 400px;
                 height: 420px;
                 /*background-color: yellow;*/
-                border-style: solid;
-                border-width: 2px;
+                border: solid 2px yellow;
                 border-radius: 5px;
-                border-color: yellow;
             }
             .titles{
                 margin-left: 5px;
@@ -84,14 +93,13 @@
                 margin:auto;
             }
             .button{
+                color: white;
                 position: fixed;
                 margin-top: 10px;
                 margin-left: 50px;
                 width: 100px;
                 height: 40px;
-                border-style: solid;
-                border-width: 1px;
-                border-color: black;
+                border: solid 1px green;
                 border-radius: 5px;
                 background-color: green;
                 cursor: pointer;
@@ -101,13 +109,21 @@
             .button:active{
                 box-shadow: none;
             }
-            .record{
+            .record_add{
                 width: 230px;
                 height: 20px;
                 margin: 15px auto;
                 /*background-color: gray;*/
             }
-            .record .new{
+            .record_add .new{
+                color: green;
+            }
+            .record_error{
+                width: 350px;
+                margin: 15px auto;
+                /*background-color: blue;*/
+            }
+            .record_error .fail{
                 color: red;
             }
         }
@@ -182,7 +198,7 @@ if (!empty($name) && !empty($surname) && !empty($email) && !empty($institute) &&
         $new_record = "*New record created successfully!*";
     }
     else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        $record_error = "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
 }
 
@@ -196,19 +212,19 @@ mysqli_close($conn);
     <p>* is Required</p>
 
     <form method="post" action="form.php" >
-       <div class="titles"> Name:<input type="text" name="myname"/>
+       <div class="titles"> Name:<input class="border" type="text" name="myname"/>
         <span class="error">*<?php echo $name_Err; ?></span>
         <br><br>
-        Surname:<input type="text" name="mysurname"/>
+        Surname:<input class="border" type="text" name="mysurname"/>
         <span class="error">*<?php echo $surname_Err; ?></span>
         <br><br>
-        E-mail:<input type="text" name="myemail"/>
+        E-mail:<input class="border" type="text" name="myemail"/>
         <span class="error">*<?php echo $email_Err; ?></span>
         <br><br>
-        Institute:<input type="text" name="myinstitute"/>
+        Institute:<input class="border" type="text" name="myinstitute"/>
         <span class="error"><?php echo $institute_Err; ?></span>
         <br><br>
-        PhoneNumber:<input type="text" name="mynumber"/>
+        PhoneNumber:<input class="border" type="text" name="mynumber"/>
         <span class="error"><?php echo $phone_Err; ?></span>
         <br><br>
        </div>
@@ -216,7 +232,8 @@ mysqli_close($conn);
     </form>
 </div>
 
-<div class="record"><span class="new"><?php echo $new_record; ?></span></div>
+<div class="record_add"><span class="new"><?php echo $new_record; ?></span></div>
+<div class="record_error"><span class="fail"><?php echo $record_error; ?></span></div>
 
 
 </body>
