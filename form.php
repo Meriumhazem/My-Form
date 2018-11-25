@@ -93,8 +93,8 @@
                 margin:auto;
             }
             .button{
+                position: relative;
                 color: white;
-                position: fixed;
                 margin-top: 10px;
                 margin-left: 50px;
                 width: 100px;
